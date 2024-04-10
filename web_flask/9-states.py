@@ -123,5 +123,25 @@ def cities_by_states():
     return render_template('8-cities_by_states.html', states=storage.all('State').values())
 
 
+# Route /states: display an HTML page
+@app.route('/states', strict_slashes=False)
+def states():
+    '''
+        Returns a string to the route /states of the web application
+    '''
+    # renders template with states
+    return render_template('9-states.html', states=storage.all('State').values())
+
+
+# Route /states/<id>: display an HTML page
+@app.route('/states/<id>', strict_slashes=False)
+def states_id(id):
+    '''
+        Returns a string to the route /states/<id> of the web application
+    '''
+    # renders template with states
+    return render_template('9-states.html', states=storage.all('State').values(), id=id)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
