@@ -10,7 +10,7 @@
 
 ## Description
 
-This is my submission to the _Holberton Coding School_ module of _AirBnB Clone, Web Framework_. In this module we worked and learned about what a Web Framework is and how it simplifies the process of building web applications. We built a web framework using Flask, we learned about routes, which are essentially the different URLs that an application can respond to. We discovered how to define these routes and handle variables within them. We explored the concept of templates and how they are used to create HTML responses in Flask. We learned how to create dynamic templates using loops and conditions, which allow us to generate different HTML content based on certain conditions. Finally, we learned how to display data from a MySQL database in HTML.
+This is my submission to the _Holberton Coding School_ module of _AirBnB Clone, Web Framework_. In this module we worked and learned about what a Web Framework is and how it simplifies the process of building web applications. We built a web application using Flask, we learned about routes, which are essentially the different URLs that an application can respond to. We discovered how to define these routes and handle variables within them. We explored the concept of templates and how they are used to create HTML responses in Flask. We learned how to create dynamic templates using loops and conditions, which allow us to generate different HTML content based on certain conditions. Finally, we learned how to display data from a MySQL database in HTML.
 
 ## Files
 
