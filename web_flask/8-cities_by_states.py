@@ -4,6 +4,8 @@
 '''
 from flask import Flask, render_template
 from models import storage
+from models.state import State
+
 
 app = Flask(__name__)
 
@@ -110,7 +112,7 @@ def states_list():
         Returns a string to the route /states_list of the web application
     '''
     # renders template with states
-    return render_template('7-states_list.html', states=storage.all('State').values())
+    return render_template('7-states_list.html', states=storage.all(State).values())
 
 
 # Route /cities_by_states: display an HTML page
@@ -120,7 +122,8 @@ def cities_by_states():
         Returns a string to the route /cities_by_states of the web application
     '''
     # renders template with states
-    return render_template('8-cities_by_states.html', states=storage.all('State').values())
+    states = storage.all(State).values()
+    return render_template('8-cities_by_states.html', states=states)
 
 
 if __name__ == '__main__':

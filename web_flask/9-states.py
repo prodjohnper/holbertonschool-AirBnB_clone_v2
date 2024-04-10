@@ -4,6 +4,9 @@
 '''
 from flask import Flask, render_template
 from models import storage
+from models.state import State
+import os
+
 
 app = Flask(__name__)
 
@@ -110,7 +113,8 @@ def states_list():
         Returns a string to the route /states_list of the web application
     '''
     # renders template with states
-    return render_template('7-states_list.html', states=storage.all('State').values())
+    states = storage.all(State).values()
+    return render_template('7-states_list.html', states=states)
 
 
 # Route /cities_by_states: display an HTML page
@@ -120,7 +124,8 @@ def cities_by_states():
         Returns a string to the route /cities_by_states of the web application
     '''
     # renders template with states
-    return render_template('8-cities_by_states.html', states=storage.all('State').values())
+    states = storage.all(State).values()
+    return render_template('8-cities_by_states.html', states=states)
 
 
 # Route /states: display an HTML page
@@ -130,7 +135,8 @@ def states():
         Returns a string to the route /states of the web application
     '''
     # renders template with states
-    return render_template('9-states.html', states=storage.all('State').values())
+    states = storage.all(State).values()
+    return render_template('9-states.html', states=states)
 
 
 # Route /states/<id>: display an HTML page
@@ -139,8 +145,13 @@ def states_id(id):
     '''
         Returns a string to the route /states/<id> of the web application
     '''
-    # renders template with states
-    return render_template('9-states.html', states=storage.all('State').values(), id=id)
+    if id:
+        try:
+            state = storage.all(State)[f'State.{id}']
+            return render_template('9-states.html', state=state, id=id,
+                                   header='States')
+        except KeyError:
+            return render_template('9-states.html', error='Not found!')
 
 
 if __name__ == '__main__':
