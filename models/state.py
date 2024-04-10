@@ -10,21 +10,21 @@ import models
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
-    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-        name = Column(String(128), nullable=False)
-        cities = relationship("City", cascade="all, delete",
-                              passive_deletes=True, backref="state")
-    else:
-        name = ""
+    name = Column(String(128), nullable=False)
 
-    @property
-    def cities(self):
-        """cities property getter"""
-        city_lst = []
-        for key, val in models.storage.all().items():
-            try:
-                if val.state_id == self.id:
-                    city_lst.append(val)
-            except AttributeError:
-                pass
-        return city_lst
+    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
+        cities = relationship('City', cascade='all, delete',
+                              backref='state')
+    else:
+
+        @property
+        def cities(self):
+            """cities property getter"""
+            city_lst = []
+            for key, val in models.storage.all().items():
+                try:
+                    if val.state_id == self.id:
+                        city_lst.append(val)
+                except AttributeError:
+                    pass
+            return city_lst
