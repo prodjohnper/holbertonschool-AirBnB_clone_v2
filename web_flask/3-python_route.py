@@ -35,7 +35,7 @@ def c_is_fun(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-''' 
+'''
     Route /python/(<text>): display "Python
     "followed by the value of the text variable
 '''
