@@ -35,7 +35,12 @@ def c_is_fun(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-# Route /python/(<text>): display "Python " followed by the value of the text variable
+'''
+    Route /python/(<text>): display "Python "
+    followed by the value of the text variable
+'''
+
+
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_is_cool(text):
@@ -58,7 +63,8 @@ def number(n):
     if isinstance(n, int):
         return '{} is a number'.format(n)
     else:
-        pass  # will not return anything if n is not an int, displays 404 error page
+        # will not return anything if nis not an int, displays 404 error page
+        pass
 
 
 if __name__ == '__main__':
