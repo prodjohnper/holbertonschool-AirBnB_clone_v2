@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+from models.city import City
 import os
 import models
 
@@ -21,10 +22,7 @@ class State(BaseModel, Base):
         def cities(self):
             """cities property getter"""
             city_lst = []
-            for key, val in models.storage.all().items():
-                try:
-                    if val.state_id == self.id:
-                        city_lst.append(val)
-                except AttributeError:
-                    pass
+            for city in models.storage.all(City).values():
+                if self.id == city.state_id:
+                    city_lst.append(city)
             return city_lst
