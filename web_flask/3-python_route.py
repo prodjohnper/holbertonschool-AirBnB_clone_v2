@@ -35,7 +35,12 @@ def c_is_fun(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-# Route /python/(<text>): display "Python " followed by the value of the text variable
+''' 
+    Route /python/(<text>): display "Python
+    "followed by the value of the text variable
+'''
+
+
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_is_cool(text):
