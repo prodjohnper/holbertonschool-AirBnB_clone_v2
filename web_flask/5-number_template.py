@@ -35,7 +35,12 @@ def c_is_fun(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-# Route /python/(<text>): display "Python " followed by the value of the text variable
+'''
+    Route /python/(<text>): display "Python "
+    followed by the value of the text variable
+'''
+
+
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_is_cool(text):
@@ -58,21 +63,24 @@ def number(n):
     if isinstance(n, int):
         return '{} is a number'.format(n)
     else:
-        pass  # will not return anything if n is not an int, displays 404 error page
+        # will not return anything if n is not an int, displays 404 error page
+        pass
 
 
 # Route /number_template/<n>: display an HTML page only if n is an integer
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
     '''
-        Returns a string to the route /number_template/<n> of the web application,
-        that exchanges n for the value of the n variable, only if n is an int
+        Returns a string to the route /number_template/<n> of the web
+        application, that exchanges n for the value of the n variable,
+        only if n is an int
     '''
     if isinstance(n, int):
         # renders template with n
         return render_template('5-number.html', number=n)
     else:
-        pass  # will not return anything if n is not an int, displays 404 error page
+        # will not return anything if n is not an int, displays 404 error page
+        pass
 
 
 if __name__ == '__main__':
