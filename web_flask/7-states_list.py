@@ -107,15 +107,6 @@ def number_odd_or_even(n):
         pass
 
 
-# Teardown: closes the current SQLAlchemy Session
-@app.teardown_appcontext
-def teardown_db(exception):
-    '''
-        Closes the current SQLAlchemy Session
-    '''
-    storage.close()
-
-
 # Route /states_list: display an HTML page
 @app.route('/states_list', strict_slashes=False)
 def states_list():
@@ -125,6 +116,15 @@ def states_list():
     # renders template with states
     return render_template('7-states_list.html',
                            states=storage.all(State).values())
+
+
+# Teardown: closes the current SQLAlchemy Session
+@app.teardown_appcontext
+def teardown_db(exception):
+    '''
+        Closes the current SQLAlchemy Session
+    '''
+    storage.close()
 
 
 if __name__ == '__main__':
