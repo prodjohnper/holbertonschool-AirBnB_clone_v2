@@ -3,8 +3,6 @@
     Script that starts a Flask web application
 '''
 from flask import Flask, render_template
-import sys
-sys.path.append('f:\\Coding Projects\\holbertonschool-AirBnB_clone_v2')
 from models import storage
 from models.state import State
 import os
@@ -41,7 +39,12 @@ def c_is_fun(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-# Route /python/(<text>): display "Python " followed by the value of the text variable
+'''
+    Route /python/(<text>): display "Python "
+    followed by the value of the text variable
+'''
+
+
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_is_cool(text):
@@ -64,29 +67,33 @@ def number(n):
     if isinstance(n, int):
         return '{} is a number'.format(n)
     else:
-        pass  # will not return anything if n is not an int, displays 404 error page
+        # will not return anything if n is not an int, displays 404 error page
+        pass
 
 
 # Route /number_template/<n>: display an HTML page only if n is an integer
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
     '''
-        Returns a string to the route /number_template/<n> of the web application,
-        that exchanges n for the value of the n variable, only if n is an int
+        Returns a string to the route /number_template/<n> of the web
+        application, that exchanges n for the value of the n variable,
+        only if n is an int
     '''
     if isinstance(n, int):
         # renders template with n
         return render_template('5-number.html', number=n)
     else:
-        pass  # will not return anything if n is not an int, displays 404 error page
+        # will not return anything if n is not an int, displays 404 error page
+        pass
 
 
 # Route /number_odd_or_even/<n>: display an HTML page only if n is an integer
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def number_odd_or_even(n):
     '''
-        Returns a string to the route /number_odd_or_even/<n> of the web application,
-        that exchanges n for the value of the n variable, only if n is an int
+        Returns a string to the route /number_odd_or_even/<n> of the web
+        application, that exchanges n for the value of the n variable,
+        only if n is an int
     '''
 
     # Determines if n is odd or even
@@ -94,9 +101,11 @@ def number_odd_or_even(n):
 
     if isinstance(n, int):
         # renders template with n
-        return render_template('6-number_odd_or_even.html', number=n, number_odd_or_even=number_odd_or_even)
+        return render_template('6-number_odd_or_even.html',
+                               number=n, number_odd_or_even=number_odd_or_even)
     else:
-        pass  # will not return anything if n is not an int, displays 404 error page
+        # will not return anything if n is not an int, displays 404 error page
+        pass
 
 
 # Teardown: closes the current SQLAlchemy Session
