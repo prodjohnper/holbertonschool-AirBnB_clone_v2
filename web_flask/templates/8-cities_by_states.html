@@ -8,13 +8,14 @@
 <BODY>
     <H1>States</H1>
     <UL>
+        {% if states %}
         {% for state in states|sort(attribute='name') %}
             <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
             <UL>
                 {% for city in state.cities|sort(attribute='name') %}
                     <LI>{{ city.id }}: <B>{{ city.name }}</B></LI>
                 {% endfor %}
+                {% endif %}
             </UL>
-        {% endfor %}
 </BODY>
 </HTML>
