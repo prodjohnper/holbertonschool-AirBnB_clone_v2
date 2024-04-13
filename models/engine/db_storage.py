@@ -13,11 +13,12 @@ from models.review import Review
 
 
 class DBStorage():
+    """DBStorage class"""
     __engine = None
     __session = None
 
     def __init__(self):
-
+        """Init"""
         user = getenv("HBNB_MYSQL_USER")
         psswd = getenv("HBNB_MYSQL_PWD")
         host = getenv("HBNB_MYSQL_HOST")
@@ -92,4 +93,5 @@ class DBStorage():
         self.__session = Session()
 
     def close(self):
+        """Close session"""
         self.__session.close()
